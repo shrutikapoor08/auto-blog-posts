@@ -2,7 +2,7 @@
   "name": "dev.to",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shrutikapoor08/auto-blog-posts/"
+    "url": "https://github.com/shrutikapoor08/auto-blog-posts.git"
   },
   "scripts": {
     "prettier": "prettier",
