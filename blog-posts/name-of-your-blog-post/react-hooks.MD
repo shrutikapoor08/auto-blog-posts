@@ -1,3 +1,12 @@
+---
+published: false
+title: "Managing state with react hooks"
+cover_image: "https://raw.githubusercontent.com/maxime1992/my-dev.to/master/blog-posts/manage-dev-to-blog-posts-with-continuous-deployment/assets/github-travis-dev-to.png"
+description:
+tags: devto, publication, blogpost, continuousdeployment, github, travis
+series:
+canonical_url:
+---
 
 In this blog post, we are going to learn about -
 State management in a React app
