@@ -38,7 +38,7 @@ useEffect is used to carry out a function that does side effects. Side effects c
 
 ``` 
 useEffect(() => {
-  // effectful code
+  document.title = 'New Title' 
 });
 
 ```
@@ -65,8 +65,23 @@ For more detailed explanation of how each of these work, read [the official docs
 
 With React 16.8, you can use Hooks out of the box.
 
-Example 1: Simple counter
+We are going to build an application to make a list of songs. Here is what it will do - 
 
-Example 2: Slightly advanced
+1.  Render a list of songs if any from the API. 
+2. Have an ability to add a song to the list. 
+3. When the song gets added to the list, update the list on the frontend and data store on the backend. 
 
-Example 3: Rocket science
+Btw, all the code is available on [my github](https://github.com/shrutikapoor08/hooks-graphql).
+To see this in action, you can go to [this codesandbox](tinyurl.com/hooksgql)
+
+We are going to use GraphQL with this app. Here are the steps we will do to setup state management using hooks - 
+
+1. Setup context. 
+Initialize your state. Call this `initialState`
+
+1. Call `useReducer` with the `initialState`.
+1. Figure out which top level component should have `context` and setup `context`.
+1. Pass in the `dispatch` returned from `useReducer` to the Context provider API so that children have access to `dispatch`. 
+1. Hook up Graphql API to a component using `useEffect`. 
+1. Use `useContext` and `useReducer` to receive and update global application state. 
+1. Use `useState` for local state. 
