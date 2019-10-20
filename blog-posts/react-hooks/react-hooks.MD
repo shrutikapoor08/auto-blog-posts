@@ -71,17 +71,61 @@ We are going to build an application to make a list of songs. Here is what it wi
 2. Have an ability to add a song to the list. 
 3. When the song gets added to the list, update the list on the frontend and data store on the backend. 
 
-Btw, all the code is available on [my github](https://github.com/shrutikapoor08/hooks-graphql).
-To see this in action, you can go to [this codesandbox](tinyurl.com/hooksgql)
+Btw, all the code is available on [my github](https://github.com/shrutikapoor08/hooks-graphql). To see this in action, you can go to [this codesandbox](tinyurl.com/hooksgql)
 
 We are going to use GraphQL with this app. Here are the steps we will do to setup state management using hooks - 
 
-1. Setup context. 
-Initialize your state. Call this `initialState`
+##### Step 1. Setup context.
 
-1. Call `useReducer` with the `initialState`.
-1. Figure out which top level component should have `context` and setup `context`.
-1. Pass in the `dispatch` returned from `useReducer` to the Context provider API so that children have access to `dispatch`. 
-1. Hook up Graphql API to a component using `useEffect`. 
-1. Use `useContext` and `useReducer` to receive and update global application state. 
-1. Use `useState` for local state. 
+
+```
+import { createContext } from 'react';
+
+const Context = createContext({
+  songs: []
+});
+```
+
+##### Step 2. Initialize your state. Call this `initialState`
+
+We are going to use this context from to intialize our state
+```
+ const initialState = useContext(Context);   
+```
+
+##### Step 3. Setup reducers using `useReducer`
+
+  Now we are going to setup reducers an initialState with `useReducer` in App.js
+
+```    
+   const [state,dispatch] = useReducer(reducer, initialState);
+```
+
+##### Step 4. Figure out which is the top level component. 
+We will need to setup a Context Provider here. For our example, it will be `App.js`. Also, pass in the dispatch returned from useReducer here so that children can have access to dispatch
+``` 
+  <Context.Provider value={{state,dispatch}}>
+    // children components
+  <Context.Provider value={{state,dispatch}}>
+```
+
+
+##### Step 5. Now hook up APIs using `useEffect` hook
+```
+  const {state, dispatch} = useContext(Context);
+
+  useEffect(() => {
+      if(songs) {
+          dispatch({type: "ADD_CONTENT", payload: songs});
+      }
+  }, [songs]);
+```
+
+##### Step 6. Update state
+You can use `useContext` and `useReducer` to receive and update global application state. For local state like form components, you can use `useState`.
+
+```
+  const [artist, setArtist] = useState("");
+  const [lyrics, setLyrics] = useState("");
+```
+
