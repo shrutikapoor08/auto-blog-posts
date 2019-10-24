@@ -18,7 +18,7 @@ It is now available with React 16.8 and higher. React hooks became hugely popula
 ### What makes react hooks so popular? 
 1. Cleaner code.
 2. No need to use class components to use state.
-3. No need to think of how React lifecycle but think of application data. 
+3. No need to think of how does React lifecycle events but think in terms of application data. 
 
 What I love about hooks is that it lets you use react state even in a functional component which wasn’t possible before react 16.8. Traditionally, if you had a functional component and you wanted to add state to it, you would have to convert it into a class component.
 
@@ -46,7 +46,7 @@ useEffect(() => {
 
 #### 3. useReducer
 
-useReducer works similar to how a reducer works in Redux if you are familiar with it. useReducer is used when state is more complex.
+useReducer works similar to how a reducer works in Redux. useReducer is used when state is more complex. You can actually use useReducer for everything you do with useState. 
 
 ```
 const [state, dispatch] = useReducer(reducer, initialArg, init);
@@ -67,11 +67,11 @@ With React 16.8, you can use Hooks out of the box.
 
 We are going to build an application to make a list of songs. Here is what it will do - 
 
-1.  Render a list of songs if any from the API. 
+1. Fetch an API for a list of a songs and render it on the UI. 
 2. Have an ability to add a song to the list. 
-3. When the song gets added to the list, update the list on the frontend and data store on the backend. 
+3. When the song gets added to the list, update the list on the frontend and store data on the backend. 
 
-Btw, all the code is available on [my github](https://github.com/shrutikapoor08/hooks-graphql). To see this in action, you can go to [this codesandbox](tinyurl.com/hooksgql)
+Btw, all the code is available on [my github](https://github.com/shrutikapoor08/hooks-graphql). To see this in action, you can go to [this codesandbox](https://codesandbox.io/embed/github/shrutikapoor08/hooks-graphql/tree/master/)
 
 We are going to use GraphQL with this app. Here are the steps we will do to setup state management using hooks - 
 
@@ -129,3 +129,4 @@ You can use `useContext` and `useReducer` to receive and update global applicati
   const [lyrics, setLyrics] = useState("");
 ```
 
+And that's it! State management is now set up. 
